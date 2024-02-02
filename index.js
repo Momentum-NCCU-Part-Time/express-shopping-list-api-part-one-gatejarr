@@ -22,6 +22,41 @@ app.get('/alllists', (req, res) => {
   AllLists.find().then((results) => res.status(200).json(results))
 })
 
+app.post('/alllists', (req, res) => {
+  const newList = new List(req.body)
+  newList.save()
+  res.status(201).json(newList)
+})
+
+app.get('/alllists/:listId', (req, res) => {
+  List.findById(req.params.listId)
+  .then((results) => {
+    if (results) {
+      res.status(200).json(results)
+    } else {
+      res.status(404).json({ message: 'not found' })
+    }
+  }) .catch((error) => res.status(400).json({ message: 'Bad Request'}))
+})
+
+app.patch('/alllists/:listId', (req, res) => {
+  List.findById(req.params.listId)
+    .then((list) => {
+      if (list) {
+        list.title = req.body.title || list.title
+        list.url = req.body.url || list.url
+        list.save()
+        res.status(200).json(list)
+      } else {
+        res.status(404).json({ message: 'not found' })
+      }
+    }) .catch((error) => res.status(400).json({ message: 'Bad Request'}))
+})
+
+app.delete('/alllists/:listId', (req, res) => {
+  List.findById(req.params.listId)
+})
+
 app.listen(port, () =>
   console.log(`Application is running on port ${port}`)
 );

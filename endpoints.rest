@@ -1,1 +1,9 @@
 GET http://localhost:3000/alllists
+
+###GET http://localhost:3000/alllists/1
+
+###POST http://localhost:3000/alllists Content-Type: application/json
+###    {
+###        "title": "Test List",
+###        "createdAt": Date,
+###    }
