@@ -7,12 +7,12 @@ mongoose.connect(process.env.DATABASE_URL);
 const db = mongoose.connection;
 db.once("open", () => console.log("🦈 Connected to MongoDB"));
 
-const port = process.env.port;
+const port = process.env.PORT;
 
 const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
 
 app.listen(port, () =>
-  console.log(`🐷 Application is running on port ${port}`)
+  console.log(`Application is running on port ${port}`)
 );
