@@ -1,9 +1,10 @@
-GET http://localhost:3000/alllists
+GET http://localhost:3000/shoppinglists
 
-###GET http://localhost:3000/alllists/1
+##GET http://localhost:3000/shoppinglists/1
 
-###POST http://localhost:3000/alllists Content-Type: application/json
-###    {
-###        "title": "Test List",
-###        "createdAt": Date,
-###    }
+POST http://localhost:3000/shoppinglists
+Content-Type: application/json
+
+    {
+        "title": "testing",
+    }

@@ -10,53 +10,52 @@ mongoose.connect(process.env.DATABASE_URL);
 const db = mongoose.connection;
 db.once("open", () => console.log("🦈 Connected to MongoDB"));
 
-
 const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
 
 // Models
-const AllLists = require('./models/AllLists')
+const ShoppingLists = require("./models/shoppinglists");
 
-app.get('/alllists', (req, res) => {
-  AllLists.find().then((results) => res.status(200).json(results))
-})
+app.get("/shoppinglists", (req, res) => {
+  ShoppingLists.find().then((results) => res.status(200).json(results));
+});
 
-app.post('/alllists', (req, res) => {
-  const newList = new List(req.body)
-  newList.save()
-  res.status(201).json(newList)
-})
+app.post("/shoppinglists", (req, res) => {
+  const newList = new ShoppingLists(req.body);
+  newList.save();
+  res.status(201).json(newList);
+});
 
-app.get('/alllists/:listId', (req, res) => {
-  List.findById(req.params.listId)
-  .then((results) => {
-    if (results) {
-      res.status(200).json(results)
-    } else {
-      res.status(404).json({ message: 'not found' })
-    }
-  }) .catch((error) => res.status(400).json({ message: 'Bad Request'}))
-})
+app.get("/shoppinglists/:listId", (req, res) => {
+  ShoppingLists.findById(req.params.listId)
+    .then((results) => {
+      if (results) {
+        res.status(200).json(results);
+      } else {
+        res.status(404).json({ message: "not found" });
+      }
+    })
+    .catch((error) => res.status(400).json({ message: "Bad Search Request" }));
+});
 
-app.patch('/alllists/:listId', (req, res) => {
+app.patch("/shoppinglists/:listId", (req, res) => {
   List.findById(req.params.listId)
     .then((list) => {
       if (list) {
-        list.title = req.body.title || list.title
-        list.url = req.body.url || list.url
-        list.save()
-        res.status(200).json(list)
+        list.title = req.body.title || list.title;
+        list.url = req.body.url || list.url;
+        list.save();
+        res.status(200).json(list);
       } else {
-        res.status(404).json({ message: 'not found' })
+        res.status(404).json({ message: "not found" });
       }
-    }) .catch((error) => res.status(400).json({ message: 'Bad Request'}))
-})
+    })
+    .catch((error) => res.status(400).json({ message: "Bad Patch Request" }));
+});
 
-app.delete('/alllists/:listId', (req, res) => {
-  List.findById(req.params.listId)
-})
+app.delete("/shoppinglists/:listId", (req, res) => {
+  List.findById(req.params.listId);
+});
 
-app.listen(port, () =>
-  console.log(`Application is running on port ${port}`)
-);
+app.listen(port, () => console.log(`Application is running on port ${port}`));
