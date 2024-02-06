@@ -33,7 +33,7 @@ app.get("/shoppinglists/:listId", (req, res) => {
       if (results) {
         res.status(200).json(results);
       } else {
-        res.status(404).json({ message: "not found" });
+        res.status(404).json({ message: "List not found" });
       }
     })
     .catch((error) =>
@@ -57,7 +57,7 @@ app.patch("/shoppinglists/:listId", (req, res) => {
 });
 
 app.delete("/shoppinglists/:listId", (req, res) => {
-  List.findById(req.params.listId);
+  ShoppingLists.findById(req.params.listId);
 });
 
 app.listen(port, () => console.log(`Application is running on port ${port}`));
