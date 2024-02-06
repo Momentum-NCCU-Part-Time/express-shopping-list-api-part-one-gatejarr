@@ -36,7 +36,9 @@ app.get("/shoppinglists/:listId", (req, res) => {
         res.status(404).json({ message: "not found" });
       }
     })
-    .catch((error) => res.status(400).json({ message: "Bad Search Request" }));
+    .catch((error) =>
+      res.status(400).json({ message: "Bad Request, list not found" })
+    );
 });
 
 app.patch("/shoppinglists/:listId", (req, res) => {
