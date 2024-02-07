@@ -1,12 +1,16 @@
 GET http://localhost:3000/shoppinglists
 
 ###
-GET http://localhost:3000/shoppinglists/65c17b768983dc88ac5afd46
+GET http://localhost:3000/shoppinglists/65c3f6c4d288bfbfceffc237
 
 ### POST for new lists
-   POST http://localhost:3000/shoppinglists
+POST http://localhost:3000/shoppinglists
  Content-Type: application/json
   
        {
-          "title": "Timestamps Working?"
+          "title": "Items?",
+          "items": [ "Are you working?" ]
        }
+
+### DELETE a list
+DELETE http://localhost:3000/shoppinglists/65c3f6c4d288bfbfceffc237

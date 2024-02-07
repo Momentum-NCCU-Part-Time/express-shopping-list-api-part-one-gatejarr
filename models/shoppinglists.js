@@ -6,21 +6,11 @@ const shoppingListSchema = new mongoose.Schema(
       type: String,
       required: true,
       maxLength: 50,
+      minLength: 3,
+      items: [{ items: String }],
     },
   },
   { timestamps: true }
 );
-
-// const shoppingListSchema = new mongoose.Schema({
-//   title: {
-//     type: String,
-//     required: true,
-//     maxLength: 50,
-//     minLength: 3,
-//     timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
-//     notes: [{ text: String }],
-//   },
-//   //{ timestamps: true },
-// });
 
 module.exports = mongoose.model("ShoppingLists", shoppingListSchema);
