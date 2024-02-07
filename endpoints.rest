@@ -3,9 +3,10 @@ GET http://localhost:3000/shoppinglists
 ###
 GET http://localhost:3000/shoppinglists/65c17b768983dc88ac5afd46
 
-#   POST http://localhost:3000/shoppinglists
-# Content-Type: application/json
+### POST for new lists
+   POST http://localhost:3000/shoppinglists
+ Content-Type: application/json
   
-#       {
-#          "title": "testing"
-#       }
+       {
+          "title": "Timestamps Working?"
+       }

@@ -3,7 +3,6 @@ const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const dayjs = require("dayjs");
-dayjs().format();
 
 const port = process.env.PORT;
 
