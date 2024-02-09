@@ -8,7 +8,7 @@ POST http://localhost:3000/shoppinglists
  Content-Type: application/json
   
        {
-          "title": "Items Again?",
+          "title": "Items Again for a third time",
           "items": [ "Are you working?" ]
        }
 

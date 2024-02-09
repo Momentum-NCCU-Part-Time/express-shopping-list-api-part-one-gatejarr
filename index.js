@@ -62,27 +62,27 @@ app.patch("/shoppinglists/:listId", (req, res) => {
 });
 
 // DELETE not working
-app.delete("/shoppinglists/:listId", (req, res) => {
-  ShoppingLists.findById(req.params.listId).then((shoppinglist) => {
-    if (shoppinglist) {
-      shoppinglist.deleteOne();
-      res.status(200).json(shoppinglist);
-    } else {
-      res.status(404).json({ message: "List not found" });
-    }
-  });
-});
-
 // app.delete("/shoppinglists/:listId", (req, res) => {
-//   ShoppingLists.findByIdAndDelete(req.params.shoppinglistid)
-//     .then((ShoppingLists) => {
-//       if (ShoppingLists) {
-//         res.status(200).json({ deleted: ShoppingLists });
-//       } else {
-//         res.status(404).json({ message: "List not found" });
-//       }
-//     })
-//     .catch((error) => res.status(400).json({ message: "Bad Delete Request " }));
+//   ShoppingLists.findById(req.params.listId).then((ShoppingLists) => {
+//     if (ShoppingLists) {
+//       ShoppingLists.deleteOne();
+//       res.status(200).json(ShoppingLists);
+//     } else {
+//       res.status(404).json({ message: "List not found" });
+//     }
+//   });
 // });
+
+ app.delete("/shoppinglists/:listId", (req, res) => {
+   ShoppingLists.findByIdAndDelete(req.params.listId)
+     .then((ShoppingLists) => {
+       if (ShoppingLists) {
+         res.status(200).json({ deleted: ShoppingLists });
+       } else {
+         res.status(404).json({ message: "List not found" });
+       }
+     })
+     .catch((error) => res.status(400).json({ message: "Bad Delete Request " }));
+ });
 
 app.listen(port, () => console.log(`Application is running on port ${port}`));
