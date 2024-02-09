@@ -13,4 +13,4 @@ POST http://localhost:3000/shoppinglists
        }
 
 ### DELETE a list
-DELETE http://localhost:3000/shoppinglists/65c3f6c4d288bfbfceffc237
+DELETE http://localhost:3000/shoppinglists/65c580b6b65407d5f7735dcb
