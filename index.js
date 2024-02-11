@@ -60,7 +60,7 @@ app.post("/shoppinglists/:listId/items", (req, res) => {
 });
 
 // PATCH update list, WIP
-app.patch("/shoppinglists/:listId", (req, res) => {
+app.post("/shoppinglists/:listId", (req, res) => {
   ShoppingLists.findById(req.params.listId)
     .then((shoppinglist) => {
       if (shoppinglist) {
