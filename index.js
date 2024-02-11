@@ -44,17 +44,19 @@ app.post("/shoppinglists", (req, res) => {
   res.status(201).json(newList);
 });
 
-// PATCH Items Array
+// POST to add items
 app.post("/shoppinglists/:listId/items", (req, res) => {
-  ShoppingLists.findById(req.params.listId).then((shoppinglist) => {
-    if (shoppinglist) {
-      shoppinglist.items.push(req.body.items);
-      shoppinglist.save();
-      res.status(201).json(shoppinglist);
-    } else {
-      res.status(404).json({ message: "List not found" });
-    }
-  });
+  ShoppingLists.findById(req.params.listId)
+    .then((shoppinglist) => {
+      if (shoppinglist) {
+        shoppinglist.items.push(req.body.items);
+        shoppinglist.save();
+        res.status(201).json(shoppinglist);
+      } else {
+        res.status(404).json({ message: "List not found" });
+      }
+    })
+    .catch((error) => res.status(400).json({ message: "Bad Request" }));
 });
 
 // PATCH update list, WIP
@@ -83,6 +85,21 @@ app.delete("/shoppinglists/:listId", (req, res) => {
       }
     })
     .catch((error) => res.status(400).json({ message: "Bad Delete Request " }));
+});
+
+// DELETE item
+app.delete("/shoppinglists/:listId/items/:itemId", (req, res) => {
+  ShoppingLists.findById(req.params.listId)
+    .then((shoppinglist) => {
+      if (shoppinglist) {
+        shoppinglist.items.id(req.params.itemId).deleteOne();
+        shoppinglist.save();
+        res.status(200).json(shoppinglist);
+      } else {
+        res.status(400).json({ message: "Item not found" });
+      }
+    })
+    .catch((error) => res.status(400).json({ message: "Bad Requst" }));
 });
 
 app.listen(port, () => console.log(`Application is running on port ${port}`));

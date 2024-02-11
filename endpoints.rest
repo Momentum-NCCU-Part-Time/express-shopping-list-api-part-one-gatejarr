@@ -1,22 +1,26 @@
+### GET All lists
 GET http://localhost:3000/shoppinglists
 
-###
+### GET Single list
 GET http://localhost:3000/shoppinglists/65c3f6c4d288bfbfceffc237
 
 ### DELETE a list
 DELETE http://localhost:3000/shoppinglists/65c90748e355e7d75f4e6e47
 
-### POST for new lists
+### POST to create new list
 POST http://localhost:3000/shoppinglists
  Content-Type: application/json
   
        {
-          "title": "Items?",
+          "title": "Items Again?",
           "items": []
        }
 
-### POST with items push
-POST http://localhost:3000/shoppinglists/65c90999c817847c7cb49145/items
+### POST items to existing list
+POST http://localhost:3000/shoppinglists/65c917883831d24aa38bd072/items
    Content-Type: application/json
 
-   {"items": {"item": "bagel", "quantity": 2, "purchased": false}}
+   {"items": {"item": "onion", "quantity": 1, "purchased": false}}
+
+### DELETE single item
+DELETE http://localhost:3000/shoppinglists/65c917883831d24aa38bd072/items/65c91f238aee26942b619be1
