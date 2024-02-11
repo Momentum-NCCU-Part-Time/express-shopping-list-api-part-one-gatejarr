@@ -34,7 +34,10 @@ const shoppingListSchema = new mongoose.Schema(
       maxLength: 50,
       minLength: 3,
     },
-    items: [{ item: String, quantity: Number, purchased: Boolean }],
+    items: [
+      { item: String, quantity: Number, purchased: Boolean },
+      { timestamps: true },
+    ],
   },
   { timestamps: true }
 );

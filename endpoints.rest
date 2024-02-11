@@ -20,7 +20,7 @@ POST http://localhost:3000/shoppinglists
 POST http://localhost:3000/shoppinglists/65c917883831d24aa38bd072/items
    Content-Type: application/json
 
-   {"items": {"item": "onion", "quantity": 1, "purchased": false}}
+   {"items": {"item": "tomatoes", "quantity": 1, "purchased": false}}
 
 ### DELETE single item
 DELETE http://localhost:3000/shoppinglists/65c917883831d24aa38bd072/items/65c91f238aee26942b619be1
