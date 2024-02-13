@@ -17,12 +17,12 @@ app.use(express.json());
 // Models
 const ShoppingLists = require("./models/ShoppingLists");
 
-// GET all lists
+// GET all lists WORKING
 app.get("/shoppinglists", (req, res) => {
   ShoppingLists.find().then((results) => res.status(200).json(results));
 });
 
-// GET with ID
+// GET individual list with ID WORKING
 app.get("/shoppinglists/:listId", (req, res) => {
   ShoppingLists.findById(req.params.listId)
     .then((results) => {
@@ -37,14 +37,14 @@ app.get("/shoppinglists/:listId", (req, res) => {
     );
 });
 
-// POST new list
+// POST new list WORKING
 app.post("/shoppinglists", (req, res) => {
   const newList = new ShoppingLists(req.body);
   newList.save();
   res.status(201).json(newList);
 });
 
-// POST to add items
+// POST to add items WORKING
 app.post("/shoppinglists/:listId/items", (req, res) => {
   ShoppingLists.findById(req.params.listId)
     .then((shoppinglist) => {
@@ -60,7 +60,7 @@ app.post("/shoppinglists/:listId/items", (req, res) => {
 });
 
 // PATCH update list, WIP
-app.post("/shoppinglists/:listId", (req, res) => {
+app.patch("/shoppinglists/:listId", (req, res) => {
   ShoppingLists.findById(req.params.listId)
     .then((shoppinglist) => {
       if (shoppinglist) {
@@ -74,7 +74,7 @@ app.post("/shoppinglists/:listId", (req, res) => {
     .catch((error) => res.status(400).json({ message: "Bad Patch Request" }));
 });
 
-// DELETE list
+// DELETE list WORKING
 app.delete("/shoppinglists/:listId", (req, res) => {
   ShoppingLists.findByIdAndDelete(req.params.listId)
     .then((shoppinglist) => {
@@ -87,7 +87,7 @@ app.delete("/shoppinglists/:listId", (req, res) => {
     .catch((error) => res.status(400).json({ message: "Bad Delete Request " }));
 });
 
-// DELETE item
+// DELETE item with list & item ID WORKING
 app.delete("/shoppinglists/:listId/items/:itemId", (req, res) => {
   ShoppingLists.findById(req.params.listId)
     .then((shoppinglist) => {
