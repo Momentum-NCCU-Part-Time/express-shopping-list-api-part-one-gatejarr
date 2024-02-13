@@ -23,4 +23,4 @@ POST http://localhost:3000/shoppinglists/65c917883831d24aa38bd072/items
    {"items": {"item": "tomatoes", "quantity": 1, "purchased": false}}
 
 ### DELETE single item
-DELETE http://localhost:3000/shoppinglists/65c917883831d24aa38bd072/items/65c92088fe9ca0860e8a2248
+DELETE http://localhost:3000/shoppinglists/65c917883831d24aa38bd072/items/65cba2803667c23b40f880ff
