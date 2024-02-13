@@ -35,8 +35,7 @@ const shoppingListSchema = new mongoose.Schema(
       minLength: 3,
     },
     items: [
-      { item: String, quantity: Number, purchased: Boolean },
-      { timestamps: true },
+      { item: String, quantity: Number, purchased: Boolean }, {timestamps: true },
     ],
   },
   { timestamps: true }
