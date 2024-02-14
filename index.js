@@ -59,7 +59,7 @@ app.post("/shoppinglists/:listId/items", (req, res) => {
     .catch((error) => res.status(400).json({ message: "Bad Request" }));
 });
 
-// PATCH update list, WIP
+// PATCH update list title WORKING
 app.patch("/shoppinglists/:listId", (req, res) => {
   ShoppingLists.findById(req.params.listId)
     .then((shoppinglist) => {
@@ -73,6 +73,29 @@ app.patch("/shoppinglists/:listId", (req, res) => {
     })
     .catch((error) => res.status(400).json({ message: "Bad Patch Request" }));
 });
+
+// PATCH to update individual items WIP; "purchased": can be changed to true, but not changed back
+app.patch("/shoppinglists/:listId/items/:itemId", (req, res) => {
+  ShoppingLists.findById(req.params.listId).then((shoppinglist) => {
+    if (!shoppinglist) {
+      res.status(400).json({ message: "List not found" })
+    } else {
+      const item = shoppinglist.items.id(req.params.itemId)
+        if (!item) {
+          res.status(400).json ({ message: "Item not found" })
+        } else {
+          const { name, quantity, purchased } = req.body
+          item.name = name || item.name
+          item.quantity = quantity || item.quantity
+          item.purchased = purchased || item.purchased
+          shoppinglist.save()
+          .then(() => res.status(201).json(item))
+          .catch((error) => res.status(404).json({ message: "Bad Request" }))
+        }
+    }
+  })
+  .catch((error) => res.status(404).json({ message: "Bad Request" }))
+})
 
 // DELETE list WORKING
 app.delete("/shoppinglists/:listId", (req, res) => {
@@ -99,7 +122,7 @@ app.delete("/shoppinglists/:listId/items/:itemId", (req, res) => {
         res.status(400).json({ message: "Item not found" });
       }
     })
-    .catch((error) => res.status(400).json({ message: "Bad Requst" }));
+    .catch((error) => res.status(400).json({ message: "Bad Request" }));
 });
 
 app.listen(port, () => console.log(`Application is running on port ${port}`));

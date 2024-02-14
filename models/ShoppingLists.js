@@ -9,7 +9,7 @@ const shoppingListSchema = new mongoose.Schema(
       minLength: 3,
     },
     items: [{ type: new mongoose.Schema({
-      item: String,
+      name: String,
       quantity: Number,
       purchased: Boolean,
     },
