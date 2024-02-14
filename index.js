@@ -9,7 +9,7 @@ const port = process.env.PORT;
 // Mongoose Connection
 mongoose.connect(process.env.DATABASE_URL);
 const db = mongoose.connection;
-db.once("open", () => console.log("🦈 Connected to MongoDB"));
+db.once("open", () => console.log("🦇 👨 Connected to MongoDB"));
 
 const app = express();
 app.use(morgan("dev"));
