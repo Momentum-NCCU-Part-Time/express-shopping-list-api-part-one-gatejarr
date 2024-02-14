@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const port = process.env.PORT;
 
@@ -13,6 +14,7 @@ db.once("open", () => console.log("🦈 Connected to MongoDB"));
 const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cors());
 
 // Models
 const ShoppingLists = require("./models/ShoppingLists");
