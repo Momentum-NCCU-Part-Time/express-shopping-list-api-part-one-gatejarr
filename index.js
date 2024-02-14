@@ -76,7 +76,9 @@ app.patch("/shoppinglists/:listId", (req, res) => {
     .catch((error) => res.status(400).json({ message: "Bad Patch Request" }));
 });
 
-// PATCH to update individual items WIP; "purchased": can be changed to true, but not changed back
+// PATCH to update individual items WIP; 
+// "purchased": can be changed to true, but not changed back;
+// If item is added as "purchased": true it cannot be changed to false
 app.patch("/shoppinglists/:listId/items/:itemId", (req, res) => {
   ShoppingLists.findById(req.params.listId).then((shoppinglist) => {
     if (!shoppinglist) {
