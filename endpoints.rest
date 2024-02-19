@@ -15,12 +15,12 @@ POST http://localhost:3000/shoppinglists
  Content-Type: application/json
   
        {
-          "title": "New List",
+          "title": "CostCo",
           "items": []
        }
 
 ### POST items to existing list
- POST http://localhost:3000/shoppinglists/65cd3b6634dbc804b00027f0/items
+ POST http://localhost:3000/shoppinglists/65d3b5db5f89858a98dd5aa3/items
     Content-Type: application/json
 
     {"items": {"name": "Windows", "quantity": 50, "purchased": false}}
