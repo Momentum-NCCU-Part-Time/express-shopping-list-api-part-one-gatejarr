@@ -8,7 +8,7 @@ GET http://localhost:3000/shoppinglists/65c3f6c4d288bfbfceffc237
 DELETE http://localhost:3000/shoppinglists/65c90748e355e7d75f4e6e47
 
 ### DELETE single item
-DELETE http://localhost:3000/shoppinglists/65cd3b6634dbc804b00027f0/items/65ceb46b2a57355e2e7773c4
+DELETE http://localhost:3000/shoppinglists/65d3b5db5f89858a98dd5aa3/items/65d3cc16e87f66867810a970
 
 ### POST to create new list
 POST http://localhost:3000/shoppinglists
@@ -23,13 +23,13 @@ POST http://localhost:3000/shoppinglists
  POST http://localhost:3000/shoppinglists/65d3b5db5f89858a98dd5aa3/items
     Content-Type: application/json
 
-    {"items": {"name": "Windows", "quantity": 50, "purchased": false}}
+    {"items": {"name": "Locks", "quantity": 5, "purchased": false}}
 
 ### PATCH to edit list name
-PATCH http://localhost:3000/shoppinglists/65cd3b6634dbc804b00027f0
+PATCH http://localhost:3000/shoppinglists/65d3b5db5f89858a98dd5aa3
    Content-Type: application/json
 
-   {"title": "Car Parts"}
+   {"title": "Lowes"}
 
 ### PATCH to edit items
 PATCH http://localhost:3000/shoppinglists/65cd3b6634dbc804b00027f0/items/65cd3b9334dbc804b00027f6
