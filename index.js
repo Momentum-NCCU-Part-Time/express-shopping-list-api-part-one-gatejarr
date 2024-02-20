@@ -61,6 +61,22 @@ app.post("/shoppinglists/:listId/items", (req, res) => {
     .catch((error) => res.status(400).json({ message: "Bad Request" }));
 });
 
+// PATCH to add items to list from front end
+app.patch("/shoppinglists/:listId/items", (req, res) => {
+  ShoppingLists.findById(req.params.listId).then((shoppinglist) => {
+    if (shoppinglist) {
+      shoppinglist.title = req.body.title || shoppinglist.title
+      shoppinglist.updatedAt = req.body.updatedAt
+      shoppinglist.items = req.body.items
+      shoppinglist.save()
+      res.status(200).json(shoppinglist)
+    } else {
+      res.status(404).json({ message: "Not Found"})
+    }
+  })
+  .catch((error) => res.status(404).json({ message: "Bad Request"}))
+})
+
 // PATCH update list title WORKING
 app.patch("/shoppinglists/:listId", (req, res) => {
   ShoppingLists.findById(req.params.listId)
